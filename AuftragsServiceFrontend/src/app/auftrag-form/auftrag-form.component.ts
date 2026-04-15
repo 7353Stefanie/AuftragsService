@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
-import { AuftragsStatus, AuftragErstellenAnfrage } from '../models/auftrag.models';
+import { AuftragsStatus, AuftragErstellenAnfrageDTO } from '../models/auftrag.models';
 import { AuftragStore } from '../store/auftrag.store';
 import { FehlerNachricht } from '../fehler-nachricht/fehler-nachricht';
 
@@ -66,7 +66,7 @@ export class AuftragFormComponent {
     this.touched.set({ kundenId: true, dokumentenTyp: true, inhalt: true });
     if (!this.formValid()) return;
 
-    const payload: AuftragErstellenAnfrage = {
+    const payload: AuftragErstellenAnfrageDTO = {
       kundenId:      parseInt(this.kundenId(), 10),
       dokumentenTyp: this.dokumentenTyp(),
       inhalt:        this.inhalt(),

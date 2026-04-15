@@ -6,14 +6,14 @@ export type AuftragsStatus =
   | '';
 
 /** POST /api/auftraege – Request-Body */
-export interface AuftragErstellenAnfrage {
+export interface AuftragErstellenAnfrageDTO {
   kundenId:      number;
   dokumentenTyp: AuftragsStatus;
   inhalt:        string;
 }
 
 /** POST /api/auftraege – Response */
-export interface AuftragErstellenResponse {
+export interface AuftragErstellenResponseDTO {
   id:            number;
   kundenId:      number;
   dokumentenTyp: AuftragsStatus;

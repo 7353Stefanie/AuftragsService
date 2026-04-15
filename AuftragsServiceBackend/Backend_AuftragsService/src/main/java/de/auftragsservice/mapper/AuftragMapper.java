@@ -10,9 +10,9 @@ import java.util.List;
 @Component
 public class AuftragMapper {
 
-    public AuftragErstellenResponse toErstellenResponse(Bericht bericht) {
+    public AuftragErstellenResponseDTO toErstellenResponse(Bericht bericht) {
         Pruefauftrag auftrag = bericht.getAuftrag();
-        return new AuftragErstellenResponse(
+        return new AuftragErstellenResponseDTO(
                 bericht.getBerichtId(),
                 bericht.getStatus().toString(),
                 new AuftragDTO(

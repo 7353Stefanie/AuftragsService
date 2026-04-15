@@ -4,8 +4,8 @@ import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap, catchError, EMPTY } from 'rxjs';
 import {
   AuftragBerichtDTO,
-  AuftragErstellenAnfrage,
-  AuftragErstellenResponse,
+  AuftragErstellenAnfrageDTO,
+  AuftragErstellenResponseDTO,
   AuftragUebersichtDTO,
 } from '../models/auftrag.models';
 import { AuftragService } from '../services/auftrag.service';
@@ -13,7 +13,7 @@ import { AuftragService } from '../services/auftrag.service';
 export interface AuftragState {
   uebersicht:     AuftragUebersichtDTO[];
   auftragBericht: AuftragBerichtDTO | null;
-  letzterAuftrag: AuftragErstellenResponse | null;
+  letzterAuftrag: AuftragErstellenResponseDTO | null;
   loading:        boolean;
   error:          string | null;
 }
@@ -70,7 +70,7 @@ export const AuftragStore = signalStore(
     ),
 
     /** POST /api/auftraege */
-    erfasseAuftrag: rxMethod<AuftragErstellenAnfrage>(
+    erfasseAuftrag: rxMethod<AuftragErstellenAnfrageDTO>(
       pipe(
         tap(() => patchState(store, { loading: true, error: null, letzterAuftrag: null })),
         switchMap(anfrage =>

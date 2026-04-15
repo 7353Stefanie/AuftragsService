@@ -1,8 +1,8 @@
 package de.auftragsservice.controller;
 
 import de.auftragsservice.dto.AuftragBerichtDTO;
-import de.auftragsservice.dto.AuftragErstellenAnfrage;
-import de.auftragsservice.dto.AuftragErstellenResponse;
+import de.auftragsservice.dto.AuftragErstellenAnfrageDTO;
+import de.auftragsservice.dto.AuftragErstellenResponseDTO;
 import de.auftragsservice.dto.AuftragUebersichtDTO;
 import de.auftragsservice.service.AuftragsService;
 import jakarta.validation.Valid;
@@ -23,7 +23,7 @@ public class AuftragsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AuftragErstellenResponse erstelleAuftrag(@Valid @RequestBody AuftragErstellenAnfrage anfrage) {
+    public AuftragErstellenResponseDTO erstelleAuftrag(@Valid @RequestBody AuftragErstellenAnfrageDTO anfrage) {
         return auftragsService.auftragsEingang(anfrage);
     }
 

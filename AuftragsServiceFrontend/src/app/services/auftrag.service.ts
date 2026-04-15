@@ -2,8 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
-  AuftragErstellenAnfrage,
-  AuftragErstellenResponse,
+  AuftragErstellenAnfrageDTO,
+  AuftragErstellenResponseDTO,
   AuftragBerichtDTO,
   AuftragUebersichtDTO,
 } from '../models/auftrag.models';
@@ -24,7 +24,7 @@ export class AuftragService {
   }
 
   /** POST /api/auftraege/uebersicht */
-  erfasseAuftrag(anfrage: AuftragErstellenAnfrage): Observable<AuftragErstellenResponse> {
-    return this.http.post<AuftragErstellenResponse>(`${this.baseUrl}`, anfrage);
+  erfasseAuftrag(anfrage: AuftragErstellenAnfrageDTO): Observable<AuftragErstellenResponseDTO> {
+    return this.http.post<AuftragErstellenResponseDTO>(`${this.baseUrl}`, anfrage);
   }
 }

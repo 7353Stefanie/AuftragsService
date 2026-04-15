@@ -1,8 +1,8 @@
 package de.auftragsservice.service;
 
 import de.auftragsservice.dto.AuftragBerichtDTO;
-import de.auftragsservice.dto.AuftragErstellenAnfrage;
-import de.auftragsservice.dto.AuftragErstellenResponse;
+import de.auftragsservice.dto.AuftragErstellenAnfrageDTO;
+import de.auftragsservice.dto.AuftragErstellenResponseDTO;
 import de.auftragsservice.dto.AuftragUebersichtDTO;
 import de.auftragsservice.entity.Bericht;
 import de.auftragsservice.entity.Pruefauftrag;
@@ -30,7 +30,7 @@ public class AuftragsService {
         this.mapper             = mapper;
     }
 
-    public AuftragErstellenResponse auftragsEingang(AuftragErstellenAnfrage anfrage) {
+    public AuftragErstellenResponseDTO auftragsEingang(AuftragErstellenAnfrageDTO anfrage) {
         Pruefauftrag auftrag = new Pruefauftrag();
         auftrag.setKundenId(anfrage.kundenId());
         auftrag.setDokumentenTyp(anfrage.dokumentenTyp());
