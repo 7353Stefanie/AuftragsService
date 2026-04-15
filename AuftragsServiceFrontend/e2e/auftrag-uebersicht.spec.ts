@@ -37,16 +37,18 @@ test.describe('Auftrag Übersicht', () => {
 
   test('Aktualisieren-Button lädt Daten neu', async ({ page }) => {
     await page.unroute('/api/auftraege/uebersicht');
+    await page.route('/api/auftraege/uebersicht', route =>
+      route.fulfill({ json: MOCK_UEBERSICHT })
+    );
 
-    let requestCount = 0;
-    await page.route('/api/auftraege/uebersicht', route => {
-      requestCount++;
-      route.fulfill({ json: MOCK_UEBERSICHT });
-    });
+    const refreshBtn = page.locator('button.refresh-btn');
+    const [response] = await Promise.all([
+      page.waitForResponse('/api/auftraege/uebersicht'),
+      refreshBtn.click(),
+    ]);
 
-    await page.getByRole('button', { name: /refresh/i }).click();
+    expect(response.status()).toBe(200);
     await expect(page.getByText('Erster Auftrag')).toBeVisible();
-    expect(requestCount).toBeGreaterThanOrEqual(1);
   });
 
   test('zeigt Hinweis wenn keine Aufträge vorhanden', async ({ page }) => {
@@ -54,7 +56,13 @@ test.describe('Auftrag Übersicht', () => {
     await page.route('/api/auftraege/uebersicht', route =>
       route.fulfill({ json: [] })
     );
-    await page.getByRole('button', { name: /refresh/i }).click();
+
+    const refreshBtn = page.locator('button.refresh-btn');
+    await Promise.all([
+      page.waitForResponse('/api/auftraege/uebersicht'),
+      refreshBtn.click(),
+    ]);
+
     await expect(page.getByText('Keine Aufträge vorhanden.')).toBeVisible();
   });
 });
