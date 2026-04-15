@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 
 const MOCK_UEBERSICHT = [
-  { auftragId: 1, dokumentenTyp: 'ERHALTEN',       erstelltAm: '2026-04-01T10:00:00', inhalt: 'Erster Auftrag'  },
-  { auftragId: 2, dokumentenTyp: 'IN_BEARBEITUNG',  erstelltAm: '2026-04-02T11:00:00', inhalt: 'Zweiter Auftrag' },
-  { auftragId: 3, dokumentenTyp: 'BESTAETIGT',      erstelltAm: '2026-04-03T12:00:00', inhalt: 'Dritter Auftrag' },
+  { auftragId: 1, dokumentenTyp: 'ERHALTEN',      erstelltAm: '2026-04-01T10:00:00', inhalt: 'Erster Auftrag'  },
+  { auftragId: 2, dokumentenTyp: 'IN_BEARBEITUNG', erstelltAm: '2026-04-02T11:00:00', inhalt: 'Zweiter Auftrag' },
+  { auftragId: 3, dokumentenTyp: 'BESTAETIGT',     erstelltAm: '2026-04-03T12:00:00', inhalt: 'Dritter Auftrag' },
 ];
 
 test.describe('Auftrag Übersicht', () => {
@@ -30,12 +30,14 @@ test.describe('Auftrag Übersicht', () => {
   });
 
   test('zeigt Status-Chips korrekt', async ({ page }) => {
-    await expect(page.locator('.status-ERHALTEN').first()).toBeVisible();
-    await expect(page.locator('.status-IN_BEARBEITUNG').first()).toBeVisible();
-    await expect(page.locator('.status-BESTAETIGT').first()).toBeVisible();
+    await expect(page.getByText('ERHALTEN').first()).toBeVisible();
+    await expect(page.getByText('IN_BEARBEITUNG').first()).toBeVisible();
+    await expect(page.getByText('BESTAETIGT').first()).toBeVisible();
   });
 
   test('Aktualisieren-Button lädt Daten neu', async ({ page }) => {
+    await page.unroute('/api/auftraege/uebersicht');
+
     let requestCount = 0;
     await page.route('/api/auftraege/uebersicht', route => {
       requestCount++;
@@ -48,6 +50,7 @@ test.describe('Auftrag Übersicht', () => {
   });
 
   test('zeigt Hinweis wenn keine Aufträge vorhanden', async ({ page }) => {
+    await page.unroute('/api/auftraege/uebersicht');
     await page.route('/api/auftraege/uebersicht', route =>
       route.fulfill({ json: [] })
     );

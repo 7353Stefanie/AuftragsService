@@ -36,8 +36,8 @@ test.describe('Auftrag suchen', () => {
     await page.getByLabel('Auftrags-ID').fill('7');
     await page.getByRole('button', { name: 'Suchen', exact: true }).click();
 
-    await expect(page.getByText('7')).toBeVisible();
-    await expect(page.getByText('44')).toBeVisible();
+    await expect(page.locator('td').filter({ hasText: /^7$/ })).toBeVisible();
+    await expect(page.locator('td').filter({ hasText: /^44$/ })).toBeVisible();
     await expect(page.getByText('Kauf von Radioantenne')).toBeVisible();
   });
 
