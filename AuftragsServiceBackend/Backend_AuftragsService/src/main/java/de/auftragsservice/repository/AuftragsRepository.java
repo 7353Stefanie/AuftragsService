@@ -1,8 +1,7 @@
-package org.example.Repository;
+package de.auftragsservice.repository;
 
-import org.example.Entity.Pruefauftrag;
+import de.auftragsservice.entity.Pruefauftrag;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 
 public interface AuftragsRepository extends JpaRepository<Pruefauftrag, Integer> {
 }

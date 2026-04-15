@@ -1,18 +1,17 @@
-package org.example.Entity;
+package de.auftragsservice.entity;
 
+import de.auftragsservice.model.AuftragsStatus;
 import jakarta.persistence.*;
-import org.example.Enum.AuftragsStatus;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 
 @Entity
 public class Bericht {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-      private UUID berichtId;
+    private UUID berichtId;
 
     @OneToOne
     @JoinColumn(name = "auftrag_id")
@@ -23,18 +22,15 @@ public class Bericht {
 
     private LocalDateTime erstelltAm;
 
-    public LocalDateTime getErstelltAm() {
-        return erstelltAm;
-    }
-
-    @PrePersist // sorgt dafür dass es erst erstellt wird und dann in die DB gesetzt wird
-    public void createdAt_prePersist() {
+    @PrePersist
+    public void setErstelltAmOnCreate() {
         erstelltAm = LocalDateTime.now();
     }
 
-    public void setErstelltAm(LocalDateTime erstelltAm) {
-        this.erstelltAm = erstelltAm;
+    public UUID getBerichtId() {
+        return berichtId;
     }
+
     public Pruefauftrag getAuftrag() {
         return auftrag;
     }
@@ -42,8 +38,6 @@ public class Bericht {
     public void setAuftrag(Pruefauftrag auftrag) {
         this.auftrag = auftrag;
     }
-
-
 
     public AuftragsStatus getStatus() {
         return status;
@@ -53,14 +47,7 @@ public class Bericht {
         this.status = status;
     }
 
-
-
-    public UUID getBerichtId() {
-        return berichtId;
-    }
-
-
-    public void setBerichtId(UUID uuid) {
-        this.berichtId = uuid;
+    public LocalDateTime getErstelltAm() {
+        return erstelltAm;
     }
 }

@@ -1,13 +1,11 @@
-package org.example.DTO;
-import org.example.Enum.AuftragsStatus;
+package de.auftragsservice.dto;
 
-import java.util.UUID;
+import de.auftragsservice.model.AuftragsStatus;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-public record Auftrag_Bericht_DTO(
-
-
+public record AuftragBerichtDTO(
         Integer auftragId,
         Integer kundenId,
         AuftragsStatus dokumentenTyp,
@@ -15,6 +13,4 @@ public record Auftrag_Bericht_DTO(
         UUID berichtId,
         String status,
         LocalDateTime erstelltAm
-
-) {
-}
+) {}

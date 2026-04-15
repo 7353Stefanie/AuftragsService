@@ -33,7 +33,7 @@ export interface AuftragBerichtDTO {
 
 /** GET /api/auftraege – Übersichtsliste */
 export interface AuftragUebersichtDTO {
-  auftrag_id:    number;
+  auftragId:     number;
   dokumentenTyp: AuftragsStatus;
   erstelltAm:    string;
   inhalt:        string;

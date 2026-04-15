@@ -29,13 +29,13 @@ import { AuftragUebersichtDTO } from '../models/auftrag.models';
 export class AuftragUebersicht implements OnInit {
   readonly store      = inject(AuftragStore);
   readonly dataSource = new MatTableDataSource<AuftragUebersichtDTO>([]);
-  readonly spalten    = ['auftrag_id', 'dokumentenTyp', 'erstelltAm', 'inhalt'];
+  readonly spalten    = ['auftragId', 'dokumentenTyp', 'erstelltAm', 'inhalt'];
 
   @ViewChild(MatSort) set sort(sort: MatSort) {
     if (sort) {
       this.dataSource.sortingDataAccessor = (row, column) => {
         switch (column) {
-          case 'auftrag_id':    return row.auftrag_id;
+          case 'auftragId':     return row.auftragId;
           case 'dokumentenTyp': return row.dokumentenTyp ?? '';
           case 'erstelltAm':   return row.erstelltAm ?? '';
           default:             return '';

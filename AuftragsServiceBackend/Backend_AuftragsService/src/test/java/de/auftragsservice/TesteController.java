@@ -1,4 +1,4 @@
-package org.example;
+package de.auftragsservice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.MethodOrderer;
@@ -12,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -23,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class Teste_Controller {
+public class TesteController {
 
     @Autowired
     private MockMvc mockMvc;
@@ -31,16 +30,14 @@ public class Teste_Controller {
     @Autowired
     public ObjectMapper objectMapper;
 
-    private static Integer auftragId;
-
     @Test
     @Order(1)
     void createAuftrag_shouldCreateRealAuftrag() throws Exception {
         String requestJson = """
-               {
-                  "kundenId": "39",
+                {
+                  "kundenId": 39,
                   "dokumentenTyp": "ERHALTEN",
-                   "inhalt": "Testbeschreibung"
+                  "inhalt": "Testbeschreibung"
                 }
                 """;
 
@@ -53,18 +50,12 @@ public class Teste_Controller {
                 .andExpect(jsonPath("$.status").exists());
     }
 
-
     @Test
     @Order(2)
     void getAuftrag_shouldReturnRealData() throws Exception {
-
-        auftragId = 7;
-        mockMvc.perform(get("/api/auftraege/{id}", auftragId))
+        mockMvc.perform(get("/api/auftraege/{id}", 7))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
-
-        mockMvc.perform(get("/api/auftraege/{id}", auftragId))
-                .andDo(print())
-                .andExpect(status().isOk());
     }
 }

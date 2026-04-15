@@ -24,10 +24,10 @@
       } @else {
         <table mat-table [dataSource]="dataSource" matSort class="auftrag-tabelle">
 
-          <!-- auftrag_id -->
-          <ng-container matColumnDef="auftrag_id">
+          <!-- auftragId -->
+          <ng-container matColumnDef="auftragId">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Auftrags-ID</th>
-            <td mat-cell *matCellDef="let row">{{ row.auftrag_id }}</td>
+            <td mat-cell *matCellDef="let row">{{ row.auftragId }}</td>
           </ng-container>
 
           <!-- dokumentenTyp -->
