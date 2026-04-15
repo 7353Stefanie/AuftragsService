@@ -1,0 +1,65 @@
+<div class="uebersicht-wrapper">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>table_chart</mat-icon>
+      <mat-card-title>Übersicht der Aufträge</mat-card-title>
+      <mat-card-subtitle>Alle erfassten Aufträge im Überblick</mat-card-subtitle>
+      <button mat-icon-button class="refresh-btn" (click)="aktualisieren()" [disabled]="store.loading()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      @if (store.loading()) {
+        <div class="lade-hinweis">
+          <mat-spinner diameter="28"></mat-spinner>
+          <span>Daten werden geladen …</span>
+        </div>
+      } @else if (store.error()) {
+        <div class="fehler-hinweis">
+          <mat-icon>error_outline</mat-icon>
+          <span>{{ store.error() }}</span>
+        </div>
+      } @else {
+        <table mat-table [dataSource]="dataSource" matSort class="auftrag-tabelle">
+
+          <!-- auftrag_id -->
+          <ng-container matColumnDef="auftrag_id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Auftrags-ID</th>
+            <td mat-cell *matCellDef="let row">{{ row.auftrag_id }}</td>
+          </ng-container>
+
+          <!-- dokumentenTyp -->
+          <ng-container matColumnDef="dokumentenTyp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Dokumententyp</th>
+            <td mat-cell *matCellDef="let row">{{ row.dokumentenTyp }}</td>
+          </ng-container>
+
+          <!-- erstelltAm -->
+          <ng-container matColumnDef="erstelltAm">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Erstellt am</th>
+            <td mat-cell *matCellDef="let row">{{ row.erstelltAm | date:'dd.MM.yyyy HH:mm' }}</td>
+          </ng-container>
+
+          <!-- inhalt -->
+          <ng-container matColumnDef="inhalt">
+            <th mat-header-cell *matHeaderCellDef>Inhalt</th>
+            <td mat-cell *matCellDef="let row">{{ row.inhalt }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="spalten"></tr>
+          <tr mat-row *matRowDef="let row; columns: spalten;"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="keine-daten" [attr.colspan]="spalten.length">
+              Keine Aufträge vorhanden.
+            </td>
+          </tr>
+
+        </table>
+      }
+
+    </mat-card-content>
+  </mat-card>
+</div>

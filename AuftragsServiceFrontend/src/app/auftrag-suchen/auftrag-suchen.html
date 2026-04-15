@@ -1,0 +1,69 @@
+<div class="form-wrapper">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>search</mat-icon>
+      <mat-card-title>Auftrag suchen</mat-card-title>
+      <mat-card-subtitle>Suche nach Aufträgen anhand der Auftrags-ID</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Auftrags-ID</mat-label>
+        <mat-icon matPrefix>tag</mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder="z.B. 1"
+          [ngModel]="auftragsId()"
+          (input)="onAuftragsIdInput($event)"
+        />
+      </mat-form-field>
+
+      <div class="ergebnis-container">
+        <span class="ergebnis-label">Ergebnisse</span>
+
+        @if (store.loading()) {
+          <div class="ergebnis-loading">
+            <mat-spinner diameter="22"></mat-spinner>
+            <span>Suche läuft …</span>
+          </div>
+        } @else if (store.error()) {
+          <p class="ergebnis-leer">Auftrags-ID konnte nicht gefunden werden.</p>
+        } @else if (store.auftragBericht(); as bericht) {
+          <table class="ergebnis-tabelle">
+            <thead>
+              <tr>
+                <th>Auftrags-ID</th>
+                <th>Kunden-ID</th>
+                <th>Status</th>
+                <th>Erstellt am</th>
+                <th>Inhalt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ bericht.auftragId }}</td>
+                <td>{{ bericht.kundenId }}</td>
+                <td><span class="status-chip status-{{ bericht.status }}">{{ bericht.status }}</span></td>
+                <td>{{ bericht.erstelltAm | date:'dd.MM.yyyy HH:mm' }}</td>
+                <td>{{ bericht.inhalt }}</td>
+              </tr>
+            </tbody>
+          </table>
+        } @else if (gesucht()) {
+          <p class="ergebnis-leer">Auftrags-ID konnte nicht gefunden werden.</p>
+        } @else {
+          <p class="ergebnis-leer">Ergebnisse erscheinen hier …</p>
+        }
+      </div>
+
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" [disabled]="store.loading()" (click)="onSuchen()">
+        <mat-icon>search</mat-icon> Suchen
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

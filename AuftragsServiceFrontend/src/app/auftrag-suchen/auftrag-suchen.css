@@ -1,0 +1,134 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 540px;
+}
+
+mat-card-header {
+  background-color: var(--sand-200) !important;
+  border-radius: 12px 12px 0 0;
+  padding: 1.1rem 1.3rem 1rem !important;
+  margin: 0 !important;
+}
+
+mat-card-title {
+  color: var(--sand-800) !important;
+  font-weight: 700 !important;
+  font-size: 1.15rem !important;
+}
+
+mat-card-subtitle {
+  color: var(--sand-600) !important;
+  font-size: 0.72rem !important;
+  margin-top: 0.5rem !important;
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 0.8rem;
+}
+
+mat-card-content {
+  padding: 0.5rem 1.3rem 0.2rem !important;
+  background-color: var(--sand-100);
+}
+
+mat-card-actions {
+  background-color: var(--sand-100);
+  border-top: 1px solid var(--sand-200);
+  padding: 0.7rem 1.3rem !important;
+}
+
+.ergebnis-container {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1rem;
+  background-color: var(--sand-50);
+  border-radius: 8px;
+  border: 1px solid var(--sand-200);
+  min-height: 80px;
+}
+
+.ergebnis-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sand-500);
+  margin-bottom: 0.5rem;
+}
+
+.ergebnis-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  display: block;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.ergebnis-tabelle thead tr {
+  background-color: var(--sand-200);
+}
+
+.ergebnis-tabelle th {
+  color: var(--sand-700);
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.55rem 0.9rem;
+  text-align: left;
+  border-bottom: 2px solid var(--sand-300);
+  white-space: nowrap;
+}
+
+.ergebnis-tabelle td {
+  color: var(--sand-800);
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--sand-200);
+  white-space: nowrap;
+}
+
+.ergebnis-leer {
+  font-size: 0.88rem;
+  color: var(--sand-500);
+  margin: 0.4rem 0 0;
+}
+
+.status-chip {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  padding: 3px 8px;
+  text-transform: uppercase;
+}
+
+.status-ERHALTEN        { background: #fff3cd; color: #7a5300; }
+.status-IN_BEARBEITUNG  { background: #ddeeff; color: #0a4d9c; }
+.status-BESTAETIGT      { background: #d4edda; color: #155724; }
+.status-ABGELEHNT       { background: #f8d7da; color: #721c24; }
+
+.ergebnis-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--sand-500);
+  font-size: 0.85rem;
+}
+
+.ergebnis-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #b00020;
+  font-size: 0.85rem;
+  margin: 0;
+}

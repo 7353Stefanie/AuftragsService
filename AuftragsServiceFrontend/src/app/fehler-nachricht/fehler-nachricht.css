@@ -1,0 +1,16 @@
+.fehler-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0.15rem 0 0.5rem;
+  font-size: 0.78rem;
+  color: #b00020;
+  line-height: 1.4;
+}
+
+.fehler-text mat-icon {
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}

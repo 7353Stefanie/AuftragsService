@@ -1,0 +1,18 @@
+<nav class="nav-panel">
+
+
+  <button class="nav-item" [class.aktiv]="aktiv === 'erfassen'" (click)="wechseln('erfassen')">
+    <mat-icon>edit_note</mat-icon>
+    <span>Auftrag erfassen</span>
+  </button>
+
+  <button class="nav-item" [class.aktiv]="aktiv === 'suchen'" (click)="wechseln('suchen')">
+    <mat-icon>search</mat-icon>
+    <span>Auftrag suchen</span>
+  </button>
+
+  <button class="nav-item" [class.aktiv]="aktiv === 'uebersicht'" (click)="wechseln('uebersicht')">
+    <mat-icon>table_chart</mat-icon>
+    <span>Übersicht der Aufträge</span>
+  </button>
+</nav>

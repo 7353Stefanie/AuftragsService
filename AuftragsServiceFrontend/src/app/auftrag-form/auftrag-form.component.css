@@ -1,0 +1,54 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 540px;
+}
+
+mat-card-header {
+  background-color: var(--sand-200) !important;
+  border-radius: 12px 12px 0 0;
+  padding: 1.1rem 1.3rem 1rem !important;
+  margin: 0 !important;
+}
+
+mat-card-title {
+  color: var(--sand-800) !important;
+  font-weight: 700 !important;
+  font-size: 1.15rem !important;
+}
+
+mat-card-subtitle {
+  color: var(--sand-600) !important;
+  font-size: 0.72rem !important;
+  margin-top: 0.5rem !important;
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 0.8rem;
+}
+
+mat-card-content {
+  padding: 0.5rem 1.3rem 0.2rem !important;
+  background-color: var(--sand-100);
+}
+
+mat-card-actions {
+  background-color: var(--sand-100);
+  border-top: 1px solid var(--sand-200);
+  padding: 0.7rem 1.3rem !important;
+}
+
+.success-msg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--sand-600);
+  font-size: 0.85rem;
+  margin-right: auto;
+}

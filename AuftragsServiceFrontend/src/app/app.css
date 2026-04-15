@@ -1,0 +1,34 @@
+/* ── Toolbar ─────────────────────────────────────────────── */
+.app-toolbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  gap: 10px;
+  letter-spacing: 0.02em;
+}
+
+.toolbar-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Page ────────────────────────────────────────────────── */
+.page-body {
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
+  background-color: var(--sand-50);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2.5rem 1.5rem;
+}
+
+.content-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}

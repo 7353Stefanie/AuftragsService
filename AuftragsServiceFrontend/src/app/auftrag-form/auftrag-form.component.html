@@ -1,0 +1,71 @@
+<div class="form-wrapper">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>edit_note</mat-icon>
+      <mat-card-title>Auftrag erfassen</mat-card-title>
+      <mat-card-subtitle>Erstelle einen neuen Prüfauftrag um diesen in der Datenbank zu speichern</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Kunden-ID</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder="z.B. 10042"
+          [ngModel]="kundenId()"
+          (input)="onKundenIdInput($event)"
+          (blur)="touch('kundenId')"
+        />
+      </mat-form-field>
+      <app-fehler-nachricht feld="kundenId" [zeigen]="showError('kundenId', kundenIdValid())" />
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Dokumententyp</mat-label>
+        <mat-icon matPrefix>label</mat-icon>
+        <mat-select
+          [ngModel]="dokumentenTyp()"
+          (ngModelChange)="dokumentenTyp.set($event)"
+          (blur)="touch('dokumentenTyp')"
+        >
+          @for (opt of statusOptions; track opt) {
+            <mat-option [value]="opt">{{ opt }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <app-fehler-nachricht feld="dokumentenTyp" [zeigen]="showError('dokumentenTyp', dokumentenTypValid())" />
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Inhalt</mat-label>
+        <mat-icon matPrefix>description</mat-icon>
+        <textarea
+          matInput
+          rows="4"
+          placeholder="Beschreibung des Auftrags …"
+          [ngModel]="inhalt()"
+          (ngModelChange)="inhalt.set($event)"
+          (blur)="touch('inhalt')"
+        ></textarea>
+      </mat-form-field>
+      <app-fehler-nachricht feld="inhalt" [zeigen]="showError('inhalt', inhaltValid())" />
+
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <app-fehler-nachricht [nachricht]="store.error() ?? ''" [zeigen]="!!store.error()" />
+      @if (store.letzterAuftrag()) {
+        <span class="success-msg"><mat-icon>check_circle</mat-icon> Erfolgreich übermittelt!</span>
+      }
+      <button mat-raised-button color="primary" [disabled]="store.loading()" (click)="onSubmit()">
+        @if (store.loading()) {
+          <mat-spinner diameter="18"></mat-spinner>
+        } @else {
+          <mat-icon>send</mat-icon>
+        }
+        Absenden
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

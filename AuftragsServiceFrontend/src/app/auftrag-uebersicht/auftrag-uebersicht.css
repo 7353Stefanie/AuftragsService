@@ -1,0 +1,113 @@
+.uebersicht-wrapper {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 860px;
+}
+
+mat-card-header {
+  background-color: var(--sand-200) !important;
+  border-radius: 12px 12px 0 0;
+  padding: 1.1rem 1.3rem 1rem !important;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+mat-card-title {
+  color: var(--sand-800) !important;
+  font-weight: 700 !important;
+  font-size: 1.15rem !important;
+}
+
+mat-card-subtitle {
+  color: var(--sand-600) !important;
+  font-size: 0.72rem !important;
+  margin-top: 0.5rem !important;
+}
+
+.refresh-btn {
+  margin-left: auto;
+  color: var(--sand-600) !important;
+}
+
+mat-card-content {
+  padding: 0 !important;
+  background-color: var(--sand-100);
+}
+
+/* ── Tabelle ─────────────────────────────────────────────── */
+.auftrag-tabelle {
+  width: 100%;
+  background-color: var(--sand-100) !important;
+}
+
+.mat-mdc-header-row {
+  background-color: var(--sand-200) !important;
+}
+
+.mat-mdc-header-cell {
+  color: var(--sand-700) !important;
+  font-weight: 700 !important;
+  font-size: 0.78rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom-color: var(--sand-300) !important;
+}
+
+.mat-mdc-cell {
+  color: var(--sand-800) !important;
+  font-size: 0.88rem !important;
+  border-bottom-color: var(--sand-200) !important;
+}
+
+.mat-mdc-row:hover {
+  background-color: var(--sand-200) !important;
+}
+
+.mat-sort-header-arrow {
+  color: var(--sand-500) !important;
+}
+
+.mat-mdc-header-cell.mat-sort-header-sorted {
+  color: var(--sand-800) !important;
+}
+
+/* ── Status-Chips ────────────────────────────────────────── */
+.status-chip {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  padding: 3px 8px;
+  text-transform: uppercase;
+}
+
+.status-ERHALTEN        { background: #fff3cd; color: #7a5300; }
+.status-IN_BEARBEITUNG  { background: #ddeeff; color: #0a4d9c; }
+.status-BESTAETIGT      { background: #d4edda; color: #155724; }
+.status-ABGELEHNT       { background: #f8d7da; color: #721c24; }
+
+/* ── Hinweise ────────────────────────────────────────────── */
+.lade-hinweis,
+.fehler-hinweis {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 2rem 1.3rem;
+  font-size: 0.88rem;
+  color: var(--sand-600);
+}
+
+.fehler-hinweis { color: #b00020; }
+
+.keine-daten {
+  text-align: center;
+  padding: 2rem;
+  color: var(--sand-500);
+  font-size: 0.88rem;
+}
