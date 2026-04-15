@@ -1,12 +1,23 @@
 ### Windows
-# Windows thumbnail cache files
 Thumbs.db
-
-# Folder config file
 [Dd]esktop.ini
-
-# Recycle Bin used on file shares
 $RECYCLE.BIN/
-
-# Windows shortcuts
 *.lnk
+
+### Dependencies
+node_modules/
+
+### IDE
+.idea/
+.vscode/
+*.swp
+
+### Build
+dist/
+build/
+*.class
+target/
+
+### Environment
+.env
+.env.local
