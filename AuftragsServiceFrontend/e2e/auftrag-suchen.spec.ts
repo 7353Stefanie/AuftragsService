@@ -9,7 +9,7 @@ test.describe('Auftrag suchen', () => {
 
   test('zeigt Suchfeld und Suchen-Button', async ({ page }) => {
     await expect(page.getByLabel('Auftrags-ID')).toBeVisible();
-    await expect(page.getByRole('button', { name: /Suchen/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Suchen', exact: true })).toBeVisible();
   });
 
   test('erlaubt nur Zahlen im Auftrags-ID Feld', async ({ page }) => {
@@ -34,7 +34,7 @@ test.describe('Auftrag suchen', () => {
     );
 
     await page.getByLabel('Auftrags-ID').fill('7');
-    await page.getByRole('button', { name: /Suchen/i }).click();
+    await page.getByRole('button', { name: 'Suchen', exact: true }).click();
 
     await expect(page.getByText('7')).toBeVisible();
     await expect(page.getByText('44')).toBeVisible();
@@ -47,7 +47,7 @@ test.describe('Auftrag suchen', () => {
     );
 
     await page.getByLabel('Auftrags-ID').fill('999');
-    await page.getByRole('button', { name: /Suchen/i }).click();
+    await page.getByRole('button', { name: 'Suchen', exact: true }).click();
 
     await expect(page.getByText('Auftrags-ID konnte nicht gefunden werden.')).toBeVisible();
   });
